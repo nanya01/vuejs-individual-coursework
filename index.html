@@ -140,6 +140,19 @@
 
                     
                 },
+                removeFromCart(item) {
+                   console.log('hello')
+                    const index = this.cart.indexOf(item);
+                    if (index > -1) { // only splice array when item is found
+                        console.log('hey')
+                    this.cart.splice(index, 1); // 2nd parameter means remove one item only
+                    }
+                  item.Space =  item.Space +1; 
+                  console.log(product.Space)
+                   console.log(this.selectedFilter)     
+
+                    
+                },
             },
         });
         </script>
