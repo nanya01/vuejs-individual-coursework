@@ -131,6 +131,16 @@
                 ]
 
             },
+            methods:{
+                addToCart(product) {
+                   this.cart.push(product)  
+                  product.Space =  product.Space -1; 
+                  console.log(product.Space)
+                   console.log(this.selectedFilter)     
+
+                    
+                },
+            },
         });
         </script>
 </body>
