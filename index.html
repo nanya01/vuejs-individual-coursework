@@ -172,6 +172,24 @@
                           console.log(count)
             }
             },
+            computed:{
+                searchResult() {
+  let searchItems = this.product
+  
+  if (this.searchValue != '' && this.searchValue) {
+        searchItems = searchItems.filter((item) => {
+          return item.Subject
+            .toUpperCase()
+            .includes(this.searchValue.toUpperCase())
+        })
+      }
+    return searchItems
+  },
+  searchResultValue(){
+   return this.searchValue != ''
+  },
+   
+            }
         });
         </script>
 </body>
