@@ -99,5 +99,39 @@
            </div>
         </main>
         </div>
+
+        <script src="">
+              var webstore = new Vue({
+            el: '#app',
+            data: {
+                sitename: 'After School Lessons',
+                product: lessons,
+            
+                cart: [],
+                showProduct: true,
+                searchValue:'',
+              
+                order:{
+                    firstName :'',
+                    lastName: '',
+                     Phone: ''
+                },
+                selectedFilter: "Location",
+            filters:[
+                    "Subject",
+                    "Location",
+                    "Price",
+                    "Availability"
+                ],
+
+                selectedArrangement:"ascending",
+                arrangement:[
+                    "ascending",
+                    "descending"
+                ]
+
+            },
+        });
+        </script>
 </body>
 </html>
