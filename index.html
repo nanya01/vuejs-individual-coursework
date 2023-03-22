@@ -188,6 +188,13 @@
   searchResultValue(){
    return this.searchValue != ''
   },
+  
+  showCheckoutButton(){
+                   return this.cart.length > 0;
+                },
+                cartItemCount() {
+                    return this.cart.length;
+                },
    
             }
         });
