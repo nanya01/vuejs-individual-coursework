@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <header><h1>{{sitename}}</h1>
+            <button v-on:click="showCheckout" v-if=" showCheckoutButton"> {{cartItemCount}}
+                <span class="fas fa-cart-plus">Checkout</span>
+            </button>
+            <button  v-else disabled > {{cartItemCount}}
+                <span class="fas fa-cart-plus">Checkout</span>
+            </button>
+        </header>
+        <main>
+           <div v-if="showProduct">
+            <div>
+                <input type="text" v-model = "searchValue" placeholder="search by subject only">
+                <select v-model="selectedFilter">
+                    <option disabled value="">Filter</option>
+                    <option v-for="filter in filters" v-bind:value="filter"  v-bind:selected="filter === selectedFilter">{{filter}}</option>
+                </select>
+                <select v-model="selectedArrangement">
+                    <option disabled value="">Filter</option>
+                    <option v-for="filter in arrangement" v-bind:value="filter"  v-bind:selected="filter === selectedArrangement">{{filter}}</option>
+                </select>
+            </div>
+            <div class="lessons"  v-if="searchResultValue" v-for="product in searchResult">
+                <figure>
+                    <img v-bind:src="product.image">
+                </figure>
+                <p>Subject: {{product.Subject}}</p>
+            <p>location: {{product.Location}}</p>
+                   
+                    <p>Price: {{product.Price}}</p>
+                    <p>Spaces: {{product.Space}}</p>
+                 
+            
+                    <button class="myBtn" v-on:click="addToCart(product)" v-if="canAddToCart(product)">Add to Cart</button>
+               
+                  
+                    <button class="myBtn" v-else disabled>Add to Cart</button>
+            </div>
+            <div class="lessons" v-else   v-for="product in sortedProducts">
+                <figure><!-- bind the 'src' attribute to the 'product.image' in 'data' -->
+                    <img v-bind:src="product.image">
+                </figure>
+                <p>Subject: {{product.Subject}}</p>
+            <p>location: {{product.Location}}</p>
+                    <!-- The double curly brackets is the shorter version of 'v-text' -->
+                    <p>Price: {{product.Price}}</p>
+                    <p>Spaces: {{product.Space}}</p>
+                 
+            
+                    <button class="myBtn" v-on:click="addToCart(product)" v-if="canAddToCart(product)">Add to Cart</button>
+               
+                  
+                    <button class="myBtn" v-else disabled>Add to Cart</button>
+            </div>
+        
+           </div>
+            <div v-else>
+                        <h2>Checkout</h2>
+                        <p>
+                            <strong>First Name:</strong>
+                            <input v-model.trim = "order.firstName">
+                        </p>
+                       <p>
+                        <strong>Last Name:</strong>
+                        <input v-model.trim = "order.lastName">
+                       </p>
+                      
+                        <p><strong>Phone number:</strong>
+                            <input v-model.number="order.Phone" type="tel"></p>
+                        </p>
+                       </p>
+                    
+                       <h2>Order Information</h2>
+                       <div class="lessons" v-for="item in cart">
+                        <p>Subject: {{item.Subject}}</p>
+                        <p>location: {{item.Location}}</p>
+                                <!-- The double curly brackets is the shorter version of 'v-text' -->
+                                <p>Price: {{item.Price}}</p>
+                                <p>Spaces: {{item.Space}}</p>
+                             
+                        
+                                <button class="myBtn" v-on:click="removeFromCart(item)">Remove from Cart</button>
+                           
+                              
+                              
+                            
+                             
+                       </div>
+                       <button v-on:click="submitForm">Place Order</button>
+           </div>
+        </main>
+        </div>
+</body>
+</html>
