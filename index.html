@@ -153,6 +153,24 @@
 
                     
                 },
+                showCheckout() {
+                    // console.log(this.showProduct);
+                    this.showProduct = this.showProduct ? false : true;
+                },
+                submitForm(){
+                    alert('Order submitted!')
+                },
+                canAddToCart(product) { return product.Space > this.cartCount(product.id); },
+                cartCount(id) {
+                    let count = 0;
+                     for (let i = 0; i < this.cart.length; i++) {
+                         if (this.cart[i] === id) {
+                            count++;
+                         }
+                         }
+                          return count;
+                          console.log(count)
+            }
             },
         });
         </script>
